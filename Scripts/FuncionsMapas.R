@@ -21,18 +21,9 @@ mapa <- function(x, liña) {
   
   orde = match(mapa.municipios@data$codigoine,
                concellos$codigoine)
-  layout(matrix(c(1,2,2,2,2,2,2,2,2), 3, 3, byrow=TRUE))
-  
-  # Primeira cuadrícula: gráfica de poboación total
-  par(mar=c(1,3,3,1))
-  plot(anos[1:x], pob.total[1:x]/1000000, 
-       col="blue", type="l", lwd=2,
-       xlim=c(1900,2020), ylim=c(0,3),
-       xlab="", ylab="", main="Poboación total (millóns)",
-       las=1, bty="n",
-       cex.axis=1.5)
-  
-  # Segunda cuadrícula: mapa
+  layout(matrix(c(2,1,1,1,1,1,1,1,1), 3, 3, byrow=TRUE))
+    
+  # Primeira cuadrícula: mapa
   par(mar=c(5,5,4,0))
   clases = clases.f(densidade.log[orde,x])
   clases.cor = findColours( clases, cores )
@@ -65,4 +56,13 @@ mapa <- function(x, liña) {
   
   points(360000,4645000,pch=19,bg="grey",cex=8.16)
   text(360000+10000,4645000,"100 000 hab",pos=4,cex=1.5)
+  
+  # Segunda cuadrícula: gráfica de poboación total
+  par(mar=c(1,3,3,1))
+  plot(anos[1:x], pob.total[1:x]/1000000, 
+       col="blue", type="l", lwd=2,
+       xlim=c(1900,2020), ylim=c(0,3),
+       xlab="", ylab="", main="Poboación total (millóns)",
+       las=1, bty="n",
+       cex.axis=1.5)
 }
