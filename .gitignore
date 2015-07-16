@@ -1,6 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
-./Figuras/
-./Carto/
-./Datos/
+/Carto/
+/Datos/
+*.png
+*.pdf
