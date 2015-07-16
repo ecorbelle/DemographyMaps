@@ -21,13 +21,26 @@ mapa <- function(x, liña) {
   
   orde = match(mapa.municipios@data$codigoine,
                concellos$codigoine)
+  layout(matrix(c(1,2,2,2,2,2,2,2,2), 3, 3, byrow=TRUE))
   
-  par(mar=c(5,1,4,1)+.1)
+  # Primeira cuadrícula: gráfica de poboación total
+  par(mar=c(1,3,3,1))
+  plot(anos[1:x], pob.total[1:x]/1000000, 
+       col="blue", type="l", lwd=2,
+       xlim=c(1900,2020), ylim=c(0,3),
+       xlab="", ylab="", main="Poboación total (millóns)",
+       las=1, bty="n",
+       cex.axis=1.5)
+  
+  # Segunda cuadrícula: mapa
+  par(mar=c(5,5,4,0))
   clases = clases.f(densidade.log[orde,x])
   clases.cor = findColours( clases, cores )
   tamaño = sqrt(poboacion2[orde,x] / 1500 )
   
-  plot(mapa.municipios, col="white", lwd=liña, border="grey50")
+  plot(mapa.municipios,
+       xlim=c(360000, 690000),
+       col="white", lwd=liña, border="grey50")
   title(main=anos[x],
         sub="(Elab. a partir do Censo de Poboación, INE)",cex.main=2,cex.sub=1.5)
   
@@ -38,18 +51,18 @@ mapa <- function(x, liña) {
          col=clases.cor[nova.orde],
          cex=tamaño[nova.orde])
   
-  legend(395000,4800000,
+  legend(350000,4760000,,
          legend=c("[0, 10)","[10, 20)","[20, 50)","[50, 150)","[150, 400)","[400, 1 000)","[1 000, 3 000)",">3 000"),
          fill=attr(clases.cor,"palette"),
-         bty="n",title="hab / km²",
+         bty="n",title="Densidade (hab / km²)",
          cex=1.5)
+
+  points(360000,4675000,pch=19,bg="grey",cex=1)
+  text(360000+10000,4675000,"   1 500 hab",pos=4,cex=1.5)
   
-  points(410000,4680000,pch=19,bg="grey",cex=1)
-  text(425000,4680000,"   1 500 hab",pos=4,cex=1.5)
+  points(360000,4660000,pch=19,bg="grey",cex=5.16)
+  text(360000+10000,4660000," 40 000 hab",pos=4,cex=1.5)
   
-  points(410000,4665000,pch=19,bg="grey",cex=5.16)
-  text(425000,4665000," 40 000 hab",pos=4,cex=1.5)
-  
-  points(410000,4640000,pch=19,bg="grey",cex=8.16)
-  text(425000,4640000,"100 000 hab",pos=4,cex=1.5)
+  points(360000,4645000,pch=19,bg="grey",cex=8.16)
+  text(360000+10000,4645000,"100 000 hab",pos=4,cex=1.5)
 }
