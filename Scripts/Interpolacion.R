@@ -1,3 +1,8 @@
+# Script para interpolar os datos censais decenais a valores anuais (interpolación lineal)
+# Eduardo Corbelle, xullo de 2015
+
+concellos <- read.csv("DatosProc/CensoConcellos.csv")
+
 # Interpolación
 pob.prov <- concellos[3:14] #taboa provisional
 anos.ref <- c(seq(1900, 1970, 10),
@@ -34,3 +39,8 @@ densidade.log <- log(densidade)
 
 ## Datos de poboación total
 pob.total <- apply(pob, 2, sum, na.rm=TRUE)
+
+# Escribimos os datos en csv
+write.csv(poboacion2, "DatosProc/CensoInterpolado.csv", row.names=FALSE)
+write.csv(densidade.log, "DatosProc/DensidadeLog.csv", row.names=FALSE)
+write.csv(pob.total, "DatosProc/PobTotal.csv", row.names=FALSE)

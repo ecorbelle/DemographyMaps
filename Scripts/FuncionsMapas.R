@@ -1,11 +1,12 @@
-require(classInt)
+library(classInt)
 
 # Cores
 clases.f <- function(x) {
   classIntervals(x,
                  9,
                  style="fixed",
-                 fixedBreaks=log(c(0.1,10,20,50,150,400,1000,3000,9000)))
+                 fixedBreaks=log(c(0.1,10,20,50,150,400,1000,3000,9000)),
+                 na.rm=TRUE)
 }
 
 # Coordenadas dos concellos
@@ -27,13 +28,14 @@ mapa <- function(x, liña) {
   par(mar=c(5,5,4,0))
   clases = clases.f(densidade.log[orde,x])
   clases.cor = findColours( clases, cores )
-  tamaño = sqrt(poboacion2[orde,x] / 1500 )
+  tamaño = sqrt(CensoInterp[orde,x] / 1500 )
   
   plot(mapa.municipios,
        xlim=c(360000, 690000),
        col="white", lwd=liña, border="grey50")
   title(main=anos[x],
-        sub="(Elab. a partir do Censo de Poboación, INE)",cex.main=2,cex.sub=1.5)
+        #sub="(Elab. a partir do Censo de Poboación, INE)",
+        cex.main=2,cex.sub=1.5)
   
   nova.orde = order(tamaño, decreasing=TRUE)
   points(long[nova.orde], lat[nova.orde],

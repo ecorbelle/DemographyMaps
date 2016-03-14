@@ -1,0 +1,29 @@
+\documentclass[ignorenonframetext, noae]{beamer}
+
+\usepackage{helvet} % avant
+\usepackage[english,spanish,galician]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{default}
+\usepackage{array}
+\usepackage{chngpage}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{animate}
+
+\logo{{\tiny \href{https://github.com/eduardocorbelle}{github.com/eduardocorbelle} }~
+      \includegraphics[width=.9cm]{./DatosOrix/Logos/by-sa}\newline
+       }
+
+\graphicspath{{"./Figuras/"}}
+\setbeamertemplate{navigation symbols}{}
+\usecolortheme{seagull}
+
+\begin{document}
+%----------- diapositiva ---------------------------------------------------%
+\begin{frame}{Ev. da poboación municipal en Galicia, 1900--2011}
+ \animategraphics[autoplay,loop,poster=first,width=1.15\textwidth]{8}{mapa}{1}{112}
+\end{frame}
+
+
+\end{document}
