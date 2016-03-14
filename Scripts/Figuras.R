@@ -1,7 +1,7 @@
 require(RColorBrewer)
 
 
-cores <- brewer.pal(9,"Blues")
+cores <- brewer.pal(9,"Oranges")
 
 
 # Figuras en png
