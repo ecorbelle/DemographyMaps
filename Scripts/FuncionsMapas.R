@@ -62,7 +62,7 @@ mapa <- function(x, liña) {
   # Segunda cuadrícula: gráfica de poboación total
   par(mar=c(1,3,3,1))
   plot(anos[1:x], pob.total[1:x]/1000000, 
-       col="orange", type="l", lwd=2,
+       col=cores[9], type="l", lwd=2,
        xlim=c(1900,2020), ylim=c(0,3),
        xlab="", ylab="", main="Poboación total (millóns)",
        las=1, bty="n",
